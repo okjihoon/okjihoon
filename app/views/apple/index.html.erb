@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+             .clearfix:after{
+             content:'';
+             display:block;
+             clear:both;
+             
+         }
+          #header{
+             
+            background-color:#FF9800;
+            font-size: 70px;
+            text-align: left;
+            height: 180px;
+            padding: 5px;
+          }
+          #header>.logo>img{
+              float:left;
+              padding:10px;
+              width:150px;
+              height:150px;
+              margin-left:100px;
+          }
+       
+          #wrapper{
+              background-color:#eee;
+              float: left;
+              width: 48%;
+              
+          }
+          #footer{
+              
+              margin:0 auto;
+          }
+          .nav{
+            font-size: 10px;
+            margin-top: 10px;
+            margin-left:1200px;
+          }
+        .left_up{
+            float:left;
+        
+            margin:0 auto;
+            padding:87px;
+
+        }
+        .right_up{
+            float:left;
+            
+            margin:0 auto;
+            padding:87px;
+        
+        }
+        .left_down{
+            float:left;
+            
+            margin:0 auto;
+            padding:87px;
+        }
+        .right_down{
+            float:left;
+            
+            margin:0 auto;
+            padding:80px;
+        }
+     
+        </style>
+        <!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div id="header">
+            <div class="logo">
+            <img src="http://lorempixel.com/300/300" >
+            </div>
+            게시판
+            <ul class="nav nav-pills">
+             
+              <li role="presentation" class="active"><a href="#">Home</a></li>
+              <li role="presentation"><a href="#">Profile</a></li>
+              <li role="presentation"><a href="#">Messages</a></li>
+              <li role="presentation"><a href="#">index</a></li>
+              <li role="presentation"><a href="#">game</a></li>
+            </ul>
+        </div>
+        <div id="wrapper" class="clearfix">
+        <div class="left_up">
+        <h1>1.정보 게시판</h1>
+         <% @mouse.each do |t| %> 
+         번호: <%=t.id%> <a href="/apple/show/<%=t.id%>"> 제목:<%=t.title%> </a> 내용: <%=t.content%><br>
+         <%end%>
+        <a href="/apple/new">[글 쓰러가기]</a>
+        </div>
+        <div class="right_up">
+        <h1>2.자유 게시판</h1>
+         <% @po.each do |a| %> 
+         번호: <%=a.id%> <a href="/apple/show2/<%=a.id%>"> 제목:<%=a.title%> </a> 내용: <%=a.content%><br>
+         <%end%>
+        <a href="/apple/new2">[글 쓰러가기]</a>
+        </div>
+        </div>
+        <div id="footer">
+        <div class="left_down">
+          
+        <h1>3.댓글 게시판 </h1>
+         <% @po2.each do |t| %> 
+         번호: <%=t.id%> <a href="/apple/show3/<%=t.id%>"> 제목:<%=t.title%> </a> 내용: <%=t.content%><br>
+         <%end%>
+        <a href="/apple/new3">[글 쓰러가기]</a>
+        </div>
+        
+        <div class="right_down">
+        <h1>4.질문 게시판</h1>
+         <% @po3.each do |t| %> 
+         번호: <%=t.id%> <a href="/apple/show4/<%=t.id%>"> 제목:<%=t.title%> </a> 내용: <%=t.content%><br>
+         <%end%>
+        <a href="/apple/new4">[글 쓰러가기]</a>
+        </div>
+        </div>
+         <%= current_user.email %>
+            <a href="/users/sign_out">로그아웃</a>
+            
+
+    </body>
+</html>

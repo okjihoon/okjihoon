@@ -1,0 +1,29 @@
+<적은 내용>
+
+<br><제목>: <%= @mouse.title %>
+<br><내용>: <%= @mouse.content %>
+
+<form action="/apple/show/<%=@mouse.id%>/house/create" method="post">
+    <h1>댓글 <input type="text" name="review"><input type="submit"></h1>
+</form>
+    <% @every.each do |t| %>
+     
+        <p> -> <%=t.review%> 
+         
+        <a href ="/apple/show/<%=@mouse.id%>/house/destroy/<%= t.id%>">[X]</a></p>
+            
+        <form action="/apple/show/<%=@mouse.id%>/house/create2/<%=t.id%>" method="post">
+        <h1>대댓글 <input type="text" name="review2"><input type="submit"></h1>
+         </form>
+        <% @ad.each do |a| %>
+            <% if a.answer_id==t.id%>
+                <p><%=a.review2%></p>
+            <%end%>
+       <%end%>
+    <%end%>
+    
+     
+    
+<br><a href="/">[목록]</a>
+<br><a href ="/apple/edit/<%=@mouse.id%>">수정하기</a>
+<br><a href ="/apple/destroy/<%=@mouse.id%>">삭제하기</a>
